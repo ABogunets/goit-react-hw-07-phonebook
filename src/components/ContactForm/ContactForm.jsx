@@ -11,8 +11,8 @@ import {
 
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
-import { getContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/selectors';
 import { checkName } from 'service-functions';
 
 export const ContactForm = () => {
@@ -37,14 +37,17 @@ export const ContactForm = () => {
   };
   // ----
   // ----form submit
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts).items;
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
-
+    const contact = {
+      name: e.target.elements.name.value,
+      phone: e.target.elements.number.value,
+    };
     if (!checkName(name, contacts)) {
-      dispatch(addContact(name, number));
+      dispatch(addContact(contact));
     }
     reset();
   };

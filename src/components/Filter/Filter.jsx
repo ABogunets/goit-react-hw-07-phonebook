@@ -6,14 +6,14 @@ import {
 } from 'components/Filter/Filter.styled';
 
 import { useDispatch } from 'react-redux';
-import { changeFilter } from '../../redux/filterSlice';
+import { changeFilter } from 'redux/filterSlice';
 import { useSelector } from 'react-redux';
-import { getFilter } from 'redux/selectors';
+import { selectFilter } from 'redux/selectors';
 
 export const Filter = () => {
   const filterInputId = nanoid();
 
-  const filterValue = useSelector(getFilter);
+  const filterValue = useSelector(selectFilter);
   const dispatch = useDispatch();
 
   const onChangeFilter = e => {

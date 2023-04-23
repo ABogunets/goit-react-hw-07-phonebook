@@ -5,14 +5,14 @@ import {
   ContactsListItem,
 } from 'components/ContactList/ContactList.styled';
 import { Contact } from 'components/Contact/Contact';
-import { getContacts } from 'redux/selectors';
-import { getFilter } from 'redux/selectors';
-import { getFilteredContacts } from 'service-functions';
+// import { selectFilter, selectContacts } from 'redux/selectors';
+// import { getFilteredContacts } from 'service-functions';
+import { selectFilteredContacts } from 'redux/selectors';
 
 export const ContactList = () => {
-  const contacts = useSelector(getContacts);
-  const filterValue = useSelector(getFilter);
-  const filteredContacts = getFilteredContacts(filterValue, contacts);
+  // const contacts = useSelector(selectContacts).items;
+  // const filterValue = useSelector(selectFilter);
+  const filteredContacts = useSelector(selectFilteredContacts);
   return (
     <ContactsWrapper>
       <ContactsList>

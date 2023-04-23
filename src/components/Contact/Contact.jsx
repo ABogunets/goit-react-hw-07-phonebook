@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import { ContactData, BtnDelete } from 'components/Contact/Contact.styled';
 
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsSlice';
+import { deleteContact } from 'redux/operations';
 
 export const Contact = ({ contact }) => {
-  const { id, name, number } = contact;
+  const { id, name, phone } = contact;
 
   const dispatch = useDispatch();
   const onDeleteContact = () => dispatch(deleteContact(id));
@@ -13,7 +13,7 @@ export const Contact = ({ contact }) => {
   return (
     <>
       <ContactData>
-        {name}: {number}
+        {name}: {phone}
       </ContactData>
       <BtnDelete onClick={onDeleteContact}>Delete</BtnDelete>
     </>

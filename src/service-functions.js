@@ -1,9 +1,4 @@
-export const getFilteredContacts = (filterValue, contacts) => {
-  const normalizedFilter = filterValue.toLowerCase();
-  return contacts.filter(contact =>
-    contact.name.toLowerCase().includes(normalizedFilter)
-  );
-};
+import { toast } from 'react-toastify';
 
 export const checkName = (name, contacts) => {
   const normalizedName = name.toLowerCase();
@@ -11,7 +6,7 @@ export const checkName = (name, contacts) => {
     contact => contact.name.toLowerCase() === normalizedName
   );
   if (foundName) {
-    alert(`${name} is already in contacts.`);
+    toast.warning(`${name} is already in contacts.`);
     return true;
   }
 };

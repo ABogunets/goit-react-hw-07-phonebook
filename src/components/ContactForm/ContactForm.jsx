@@ -9,8 +9,7 @@ import {
   SubmitBtn,
 } from 'components/ContactForm/ContactForm.styled';
 
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from 'redux/operations';
 import { selectContacts } from 'redux/selectors';
 import { checkName } from 'service-functions';
@@ -37,7 +36,7 @@ export const ContactForm = () => {
   };
   // ----
   // ----form submit
-  const contacts = useSelector(selectContacts).items;
+  const contactItems = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
@@ -46,7 +45,7 @@ export const ContactForm = () => {
       name: e.target.elements.name.value,
       phone: e.target.elements.number.value,
     };
-    if (!checkName(name, contacts)) {
+    if (!checkName(name, contactItems)) {
       dispatch(addContact(contact));
     }
     reset();
